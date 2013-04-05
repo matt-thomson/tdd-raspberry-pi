@@ -1,0 +1,50 @@
+# set up
+Two possible starting points - Cash Register displays balance
+
+
+#test displays entered coin
+coin 100
+CUT: CashRegister
+Stub: Coin Slot
+Mock: Display
+
+
+expect "Credit: 100"
+MUT: CashRegister.tick
+
+CoinSlot->received_coin returns 100
+
+#test received zero does not display
+coin 0
+CUT: CashRegister
+Stub: Coin Slot
+Mock: Display
+
+display.expects(:show).never
+
+#test displays balance after more coins
+coin 100, coin 50
+
+expect "Credit: 150"
+
+#test display shows balance zero after checkout
+
+expect "Insert coin"
+
+
+or/and Display shows on USB Display
+classes: Display, USBDisplay, USB
+#Display shows empty message unchanged
+CUT: Display
+Mock: USBDisplay
+
+#Display shows short message on first line
+
+#Display shows new line on second line
+
+#Display truncates first line too long
+
+#Display truncates second line too long
+
+
+
