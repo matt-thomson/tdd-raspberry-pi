@@ -57,7 +57,7 @@ eventloop << drawer_light
 
 button_adapter = ButtonAdapter.new
 motor_adapter = MotorAdapter.new
-eventloop << Dispenser.new(button_adapter, motor_adapter)
+eventloop << Dispenser.new(drawer_light, button_adapter, motor_adapter, bin_adapter)
 
 bin_adapter = BinAdapter.new
 eventloop << Drawer.new(drawer_light, bin_adapter)
