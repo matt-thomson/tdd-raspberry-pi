@@ -5,20 +5,20 @@ class MotorTest < Test::Unit::TestCase
 	def test_turns_on_motor_when_button_pressed
 		button = stub(:is_pressed? => true)
 
-		motor = Motor.new(button)
-		motor.expects(:turn_on)
-		motor.expects(:turn_off).never
+		motor_adapter = mock("a motor adapter")
+		motor_adapter.expects(:turn_on)
 
+		motor = Motor.new(button, motor_adapter)
 		motor.tick
 	end
 
 	def test_turns_off_motor_when_button_not_pressed
 		button = stub(:is_pressed? => false)
 
-		motor = Motor.new(button)
-		motor.expects(:turn_off)
-		motor.expects(:turn_on).never
+		motor_adapter = mock("a motor adapter")
+		motor_adapter.expects(:turn_off)
 
+		motor = Motor.new(button, motor_adapter)
 		motor.tick
 	end
 end

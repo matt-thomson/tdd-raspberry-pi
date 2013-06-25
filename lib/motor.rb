@@ -1,23 +1,14 @@
-require 'pi_ports'
-
 class Motor
-	def initialize(button)
+	def initialize(button, motor_adapter)
 		@button = button
+		@motor_adapter = motor_adapter
 	end
 
 	def tick
 		if @button.is_pressed?
-			turn_on
+			@motor_adapter.turn_on
 		else
-			turn_off
+			@motor_adapter.turn_off
 		end
-	end
-
-	def turn_on
-		PiPorts::Pins.pin_0_high
-	end
-
-	def turn_off
-		PiPorts::Pins.pin_0_low
 	end
 end
