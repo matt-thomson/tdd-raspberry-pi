@@ -42,6 +42,10 @@ eventloop = EventLoop.new(display)
 # eventloop << MyComponent.new
 # your component should have a 'tick' method
 
+button = Button.new
+motor_adapter = MotorAdapter.new
+eventloop << Motor.new(button, motor_adapter)
+
 exit_on_signals(eventloop)
 eventloop.execute
 
