@@ -13,6 +13,7 @@ require 'led_adapter'
 require 'dispenser'
 require 'drawer'
 require 'drawer_light'
+require 'idle_checker'
 
 class FakeDisplay
   def show(line_nr, text)
@@ -61,6 +62,8 @@ eventloop << Dispenser.new(drawer_light, button_adapter, motor_adapter, bin_adap
 
 bin_adapter = BinAdapter.new
 eventloop << Drawer.new(drawer_light, bin_adapter)
+
+eventloop << IdleChecker.new(drawer_light)
 
 exit_on_signals(eventloop)
 eventloop.execute
