@@ -4,9 +4,14 @@ $: << File.expand_path(File.dirname(__FILE__) + "/../lib")
 require 'pi_ports'
 require 'pi_ports/usb'
 require 'eventloop'
+
 require 'button_adapter'
 require 'motor_adapter'
+require 'bin_adapter'
+require 'led_adapter'
+
 require 'dispenser'
+require 'drawer'
 
 class FakeDisplay
   def show(line_nr, text)
@@ -48,6 +53,10 @@ eventloop = EventLoop.new(display)
 button_adapter = ButtonAdapter.new
 motor_adapter = MotorAdapter.new
 eventloop << Dispenser.new(button_adapter, motor_adapter)
+
+bin_adapter = BinAdapter.new
+led_adapter = LedAdapter.new
+eventloop << Drawer.new(bin_adapter, led_adapter)
 
 exit_on_signals(eventloop)
 eventloop.execute
