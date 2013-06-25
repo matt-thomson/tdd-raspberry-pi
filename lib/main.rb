@@ -63,7 +63,7 @@ eventloop << Dispenser.new(drawer_light, button_adapter, motor_adapter, bin_adap
 bin_adapter = BinAdapter.new
 eventloop << Drawer.new(drawer_light, bin_adapter)
 
-eventloop << IdleChecker.new(drawer_light)
+eventloop << IdleChecker.new(drawer_light, button_adapter, bin_adapter)
 
 exit_on_signals(eventloop)
 eventloop.execute
