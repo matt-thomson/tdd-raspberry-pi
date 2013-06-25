@@ -6,7 +6,7 @@ class DrawerLightTest < Test::Unit::TestCase
 		led_adapter = mock()
 		led_adapter.expects(:turn_off)
 
-		drawer_light = DrawerLight.new(led_adapter)
+		drawer_light = DrawerLight.new(led_adapter, 10)
 
 		drawer_light.tick
 	end
@@ -15,7 +15,7 @@ class DrawerLightTest < Test::Unit::TestCase
 		led_adapter = mock()
 		led_adapter.expects(:turn_on)
 
-		drawer_light = DrawerLight.new(led_adapter)
+		drawer_light = DrawerLight.new(led_adapter, 10)
 		drawer_light.turn_on
 
 		drawer_light.tick
@@ -25,7 +25,7 @@ class DrawerLightTest < Test::Unit::TestCase
 		led_adapter = mock()
 		led_adapter.expects(:turn_off)
 
-		drawer_light = DrawerLight.new(led_adapter)
+		drawer_light = DrawerLight.new(led_adapter, 10)
 		drawer_light.turn_off
 
 		drawer_light.tick
@@ -34,8 +34,8 @@ class DrawerLightTest < Test::Unit::TestCase
 	def test_should_flash_light_correctly_when_requested
 		led_adapter = mock()
 
-		drawer_light = DrawerLight.new(led_adapter)
-		drawer_light.flash
+		drawer_light = DrawerLight.new(led_adapter, 10)
+		drawer_light.flash(3)
 
 		# Flash 3 times, for 250ms (5 ticks) each.
 		(1..3).each do |n|

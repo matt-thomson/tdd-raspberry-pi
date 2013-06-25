@@ -1,8 +1,9 @@
 class DrawerLight
-	def initialize(led_adapter)
+	def initialize(led_adapter, flash_cycles)
 		@led_adapter = led_adapter
 		@is_on = false
 		@flash_count = 0
+		@flash_cycles = flash_cycles
 	end
 
 	def tick
@@ -21,7 +22,7 @@ class DrawerLight
 
 	def handle_flash
 		@flash_count -= 1
-		if @flash_count % 10 < 5
+		if 2 * (@flash_count % @flash_cycles) < @flash_cycles
 			return true
 		else
 			return false
@@ -36,7 +37,7 @@ class DrawerLight
 		@is_on = false
 	end
 
-	def flash
-		@flash_count = 30
+	def flash(num_flashes)
+		@flash_count = num_flashes * @flash_cycles
 	end
 end

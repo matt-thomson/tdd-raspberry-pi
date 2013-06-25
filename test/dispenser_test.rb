@@ -16,9 +16,9 @@ class MotorTest < Test::Unit::TestCase
 		motor.tick
 	end
 
-	def test_turns_off_motor_and_blinks_light_when_button_pressed_and_item_in_bin
+	def test_turns_off_motor_and_flashes_light_when_button_pressed_and_item_in_bin
 		drawer_light = mock("a drawer light")
-		drawer_light.expects(:flash)
+		drawer_light.expects(:flash).with(3)
 		
 		button_adapter = stub(:pressed? => true)
 

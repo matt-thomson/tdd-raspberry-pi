@@ -52,7 +52,7 @@ eventloop = EventLoop.new(display)
 # your component should have a 'tick' method
 
 led_adapter = LedAdapter.new
-drawer_light = DrawerLight.new(led_adapter)
+drawer_light = DrawerLight.new(led_adapter, 10)
 eventloop << drawer_light
 
 button_adapter = ButtonAdapter.new

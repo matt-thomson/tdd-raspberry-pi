@@ -9,7 +9,7 @@ class Dispenser
 	def tick
 		if @button_adapter.pressed?
 			if @bin_adapter.down?
-				@drawer_light.flash
+				@drawer_light.flash(3)
 				@motor_adapter.turn_off
 			else
 				@motor_adapter.turn_on
