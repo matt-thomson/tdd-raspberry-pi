@@ -1,8 +1,8 @@
 # The Joy of TDD on the Raspberry Pi #
 
-This repository contains the exercises from this session at [SPA 2013](http://www.spaconference.org).
+This repository contains the exercises from this session at [SPA 2013](http://www.spaconference.org).  The session was led by Marc Evers, Willem van den Ende and Rob Westgeest.
 
-Only user stories 1 and 2 are implemented at present
+User story 4 is not yet implemented.
 
 ## User Stories ##
 
