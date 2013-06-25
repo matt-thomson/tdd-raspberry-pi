@@ -1,24 +1,24 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
-require 'motor'
+require 'dispenser'
 
 class MotorTest < Test::Unit::TestCase
 	def test_turns_on_motor_when_button_pressed
-		button = stub(:is_pressed? => true)
+		button_adapter = stub(:is_pressed? => true)
 
 		motor_adapter = mock("a motor adapter")
 		motor_adapter.expects(:turn_on)
 
-		motor = Motor.new(button, motor_adapter)
+		motor = Dispenser.new(button_adapter, motor_adapter)
 		motor.tick
 	end
 
 	def test_turns_off_motor_when_button_not_pressed
-		button = stub(:is_pressed? => false)
+		button_adapter = stub(:is_pressed? => false)
 
 		motor_adapter = mock("a motor adapter")
 		motor_adapter.expects(:turn_off)
 
-		motor = Motor.new(button, motor_adapter)
+		motor = Dispenser.new(button_adapter, motor_adapter)
 		motor.tick
 	end
 end

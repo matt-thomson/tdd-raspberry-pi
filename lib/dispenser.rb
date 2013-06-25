@@ -1,4 +1,4 @@
-class Motor
+class Dispenser
 	def initialize(button, motor_adapter)
 		@button = button
 		@motor_adapter = motor_adapter

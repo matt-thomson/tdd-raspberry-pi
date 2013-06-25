@@ -4,6 +4,9 @@ $: << File.expand_path(File.dirname(__FILE__) + "/../lib")
 require 'pi_ports'
 require 'pi_ports/usb'
 require 'eventloop'
+require 'button_adapter'
+require 'motor_adapter'
+require 'dispenser'
 
 class FakeDisplay
   def show(line_nr, text)
@@ -42,9 +45,9 @@ eventloop = EventLoop.new(display)
 # eventloop << MyComponent.new
 # your component should have a 'tick' method
 
-button = Button.new
+button_adapter = ButtonAdapter.new
 motor_adapter = MotorAdapter.new
-eventloop << Motor.new(button, motor_adapter)
+eventloop << Dispenser.new(button_adapter, motor_adapter)
 
 exit_on_signals(eventloop)
 eventloop.execute
