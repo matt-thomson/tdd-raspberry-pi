@@ -7,16 +7,24 @@ class DrawerLight
 
 	def tick
 		if @flash_count > 0
-			@flash_count -= 1
-			if @flash_count % 10 < 5
-				@led_adapter.turn_on
-			else
-				@led_adapter.turn_off
-			end
-		elsif @is_on
+			turn_on = handle_flash
+		else
+			turn_on = @is_on
+		end
+
+		if turn_on
 			@led_adapter.turn_on
 		else
 			@led_adapter.turn_off
+		end
+	end
+
+	def handle_flash
+		@flash_count -= 1
+		if @flash_count % 10 < 5
+			return true
+		else
+			return false
 		end
 	end
 
