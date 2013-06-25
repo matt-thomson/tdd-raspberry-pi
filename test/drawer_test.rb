@@ -5,20 +5,20 @@ class DrawerTest < Test::Unit::TestCase
 	def test_led_switched_on_when_item_in_bin
 		bin_adapter = stub(:down? => true)
 
-		led_adapter = mock()
-		led_adapter.expects(:turn_on)
+		drawer_light = mock()
+		drawer_light.expects(:turn_on)
 
-		drawer = Drawer.new(bin_adapter, led_adapter)
+		drawer = Drawer.new(drawer_light, bin_adapter)
 		drawer.tick
 	end
 
 	def test_led_switched_off_when_bin_empty
 		bin_adapter = stub(:down? => false)
 
-		led_adapter = mock()
-		led_adapter.expects(:turn_off)
+		drawer_light = mock()
+		drawer_light.expects(:turn_off)
 
-		drawer = Drawer.new(bin_adapter, led_adapter)
+		drawer = Drawer.new(drawer_light, bin_adapter)
 		drawer.tick
 	end
 end

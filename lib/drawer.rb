@@ -1,14 +1,14 @@
 class Drawer
-	def initialize(bin_adapter, led_adapter)
+	def initialize(drawer_light, bin_adapter)
+		@drawer_light = drawer_light
 		@bin_adapter = bin_adapter
-		@led_adapter = led_adapter
 	end
 
 	def tick
 		if @bin_adapter.down?
-			@led_adapter.turn_on
+			@drawer_light.turn_on
 		else
-			@led_adapter.turn_off
+			@drawer_light.turn_off
 		end
 	end
 end

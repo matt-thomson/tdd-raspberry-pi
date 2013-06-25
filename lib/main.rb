@@ -12,6 +12,7 @@ require 'led_adapter'
 
 require 'dispenser'
 require 'drawer'
+require 'drawer_light'
 
 class FakeDisplay
   def show(line_nr, text)
@@ -50,13 +51,16 @@ eventloop = EventLoop.new(display)
 # eventloop << MyComponent.new
 # your component should have a 'tick' method
 
+led_adapter = LedAdapter.new
+drawer_light = DrawerLight.new(led_adapter)
+eventloop << drawer_light
+
 button_adapter = ButtonAdapter.new
 motor_adapter = MotorAdapter.new
 eventloop << Dispenser.new(button_adapter, motor_adapter)
 
 bin_adapter = BinAdapter.new
-led_adapter = LedAdapter.new
-eventloop << Drawer.new(bin_adapter, led_adapter)
+eventloop << Drawer.new(drawer_light, bin_adapter)
 
 exit_on_signals(eventloop)
 eventloop.execute
