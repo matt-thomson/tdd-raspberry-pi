@@ -1,7 +1,8 @@
 class Dispenser
-	def initialize(button_adapter, motor_adapter)
+	def initialize(button_adapter, motor_adapter, bin_adapter)
 		@button_adapter = button_adapter
 		@motor_adapter = motor_adapter
+		@bin_adapter = bin_adapter
 	end
 
 	def tick

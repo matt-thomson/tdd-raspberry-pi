@@ -8,7 +8,9 @@ class MotorTest < Test::Unit::TestCase
 		motor_adapter = mock("a motor adapter")
 		motor_adapter.expects(:turn_on)
 
-		motor = Dispenser.new(button_adapter, motor_adapter)
+        bin_adapter = stub()
+
+		motor = Dispenser.new(button_adapter, motor_adapter, bin_adapter)
 		motor.tick
 	end
 
@@ -18,7 +20,9 @@ class MotorTest < Test::Unit::TestCase
 		motor_adapter = mock("a motor adapter")
 		motor_adapter.expects(:turn_off)
 
-		motor = Dispenser.new(button_adapter, motor_adapter)
+		bin_adapter = stub()
+
+		motor = Dispenser.new(button_adapter, motor_adapter, bin_adapter)
 		motor.tick
 	end
 end
