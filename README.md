@@ -2,8 +2,6 @@
 
 This repository contains the exercises from this session at [SPA 2013](http://www.spaconference.org).  The session was led by Marc Evers, Willem van den Ende and Rob Westgeest.
 
-User story 4 is not yet implemented.
-
 ## User Stories ##
 
 1. When I press the button, a single drink is dispensed in the bin.
