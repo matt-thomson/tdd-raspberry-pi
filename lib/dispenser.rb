@@ -6,7 +6,7 @@ class Dispenser
 	end
 
 	def tick
-		if @button_adapter.is_pressed? and !@bin_adapter.is_down?
+		if @button_adapter.pressed? and !@bin_adapter.down?
 			@motor_adapter.turn_on
 		else
 			@motor_adapter.turn_off

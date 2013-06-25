@@ -1,7 +1,7 @@
 require 'pi_ports'
 
 class ButtonAdapter
-	def is_pressed?
+	def pressed?
 		return PiPorts::Pins.pin_1_high?
 	end
 end

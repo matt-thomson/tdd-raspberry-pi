@@ -3,7 +3,7 @@ require 'drawer'
 
 class DrawerTest < Test::Unit::TestCase
 	def test_led_switched_on_when_item_in_bin
-		bin_adapter = stub(:is_down? => true)
+		bin_adapter = stub(:down? => true)
 
 		led_adapter = mock()
 		led_adapter.expects(:turn_on)
@@ -13,7 +13,7 @@ class DrawerTest < Test::Unit::TestCase
 	end
 
 	def test_led_switched_off_when_bin_empty
-		bin_adapter = stub(:is_down? => false)
+		bin_adapter = stub(:down? => false)
 
 		led_adapter = mock()
 		led_adapter.expects(:turn_off)

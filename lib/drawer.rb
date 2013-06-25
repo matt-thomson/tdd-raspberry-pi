@@ -5,7 +5,7 @@ class Drawer
 	end
 
 	def tick
-		if @bin_adapter.is_down?
+		if @bin_adapter.down?
 			@led_adapter.turn_on
 		else
 			@led_adapter.turn_off
